@@ -18,10 +18,10 @@ const connection = new IORedis({
 export const urlQueue = new Queue('urlQueue', {
     connection,
     defaultJobOptions: {
-        attempts: 50,
+        attempts: 10,
         backoff: {
             type: 'fixed',
-            delay: 10000,
+            delay: 15000,
         },
     },
 });
