@@ -1,0 +1,53 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch TypeScript",
+      "program": "${workspaceFolder}/backend/src/infrastructure/server.ts",
+      "preLaunchTask": "npm run build",
+      "outFiles": ["${workspaceFolder}/backend/dist/**/*.js"],
+      "sourceMaps": true,
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    // {
+    //   "args": [
+    //     "-u",
+    //     "tdd",
+    //     "--timeout",
+    //     "999999",
+    //     "--colors",
+    //     "${workspaceFolder}/test"
+    //   ],
+    //   "internalConsoleOptions": "openOnSessionStart",
+    //   "name": "Mocha Tests",
+    //   "program": "${workspaceFolder}/backend/src/tests/media.test.ts",
+    //   "sourceMaps": true,
+    //   "request": "launch",
+    //   "skipFiles": [
+    //     "<node_internals>/**"
+    //   ],
+    //   "type": "node"
+    // }
+    {
+      "args": [
+        "-u",
+        "tdd",
+        "--timeout",
+        "999999",
+        "--colors",
+        "${workspaceFolder}/backend/src/tests"
+      ],
+    "type": "node",
+      "request": "launch",
+      "name": "Launch Tests",
+      "program": "${workspaceFolder}/backend/src/tests/media.test.ts",
+      "preLaunchTask": "npm run build",
+      "sourceMaps": true,
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}

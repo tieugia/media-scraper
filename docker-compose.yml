@@ -1,0 +1,65 @@
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: mssql
+    ports:
+      - "1434:1433"
+    environment:
+      SA_PASSWORD: 123456@abc
+      ACCEPT_EULA: "Y"
+      DATABASE_HOST: localhost
+    deploy:
+      resources:
+        limits:
+          memory: 5000M
+          cpus: "1.0"
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    deploy:
+      resources:
+        limits:
+          memory: 70M
+          cpus: "0.2"
+
+  frontend:
+    build:
+      context: ./frontend
+    volumes:
+      - ./frontend:/app
+    container_name: media-scraper-fe
+    ports:
+      - "3003:3000"
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+          cpus: "0.2"
+
+  backend:
+    build:
+      context: ./backend
+    volumes:
+      - ./backend:/dist
+    container_name: media-scraper-be
+    ports:
+      - "3002:3001"
+    depends_on:
+      - mssql
+      - redis
+    environment:
+      DATABASE_HOST: 172.18.0.1 # change to the docker ip config
+      DATABASE_PORT: 1434
+      DATABASE_USER: sa
+      DATABASE_PASSWORD: 123456@abc
+      DATABASE_NAME: scraperdb_dev
+      REDIS_HOST: 172.18.0.1 # change to the docker ip config
+      REDIS_PORT: 6379
+    deploy:
+      resources:
+        limits:
+          memory: 5000M
+          cpus: "1.0"

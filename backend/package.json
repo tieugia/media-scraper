@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true
+  },
+  "dependencies": {
+    "@types/basic-auth": "^1.1.8",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.9.0",
+    "@types/sequelize": "^4.28.20",
+    "axios": "^1.7.7",
+    "basic-auth": "^2.0.1",
+    "body-parser": "^1.20.3",
+    "bullmq": "^5.26.2",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "dotenv-flow": "^4.1.0",
+    "express": "^4.21.1",
+    "ioredis": "^5.4.1",
+    "morgan": "^1.10.0",
+    "mssql": "^11.0.1",
+    "sequelize": "^6.37.5",
+    "sequelize-cli": "^6.6.2",
+    "tedious": "^18.6.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
+    "winston": "^3.17.0"
+  },
+  "type": "commonjs",
+  "name": "media-scraper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --import=tsx src/tests/*.test.ts",
+    "build": "tsc",
+    "start": "node dist/infrastructure/server.js",
+    "dev": "nodemon dist/infrastructure/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/chai": "^5.0.1",
+    "@types/mocha": "^10.0.9",
+    "@types/supertest": "^6.0.2",
+    "chai": "^5.1.2",
+    "mocha": "^10.8.2",
+    "nodemon": "^3.1.7",
+    "supertest": "^7.0.0",
+    "tsx": "^4.19.2"
+  }
+}
